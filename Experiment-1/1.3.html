@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Responsive Bank</title>
+
+<style>
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    body.dark-mode {
+        background-color: #0a0909;
+        color: rgb(255, 255, 255);
+    }
+
+    #h1 {
+        background-color: rgb(87, 45, 254);
+        color: white;
+    }
+
+    #h2 {
+        background-color: rgb(243, 3, 3);
+        color: white;
+    }
+</style>
+</head>
+
+<body>
+
+<div>
+    <h1>Balance: $ <span id="balance">0</span></h1>
+
+    <!-- Button with ID -->
+    <button id="modeBtn" onclick="toggleDarkMode()">🌙 Dark Mode</button><br><br>
+
+    <label>Amount</label><br><br>
+    <input type="number" placeholder="enter amount" id="amount"><br><br>
+
+    <button id="h1" onclick="deposit()">Deposit</button>
+    <button id="h2" onclick="withdraw()">Withdraw</button>
+
+    <p id="message"></p>
+
+<script>
+    let balance = 0;
+
+    function deposit() {
+        let amount = Number(document.getElementById('amount').value);
+        if (amount > 0) {
+            balance += amount;
+            document.getElementById('balance').innerText = balance;
+            document.getElementById('message').innerText = "Deposit Successful";
+        } else {
+            document.getElementById('message').innerText = "Enter a valid amount!";
+        }
+    }
+
+    function withdraw() {
+        let amount = Number(document.getElementById('amount').value);
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            document.getElementById('balance').innerText = balance;
+            document.getElementById('message').innerText = "Withdraw Successful";
+        } else {
+            document.getElementById('message').innerText = "Insufficient balance";
+        }
+    }
+
+    function toggleDarkMode() {
+        const btn = document.getElementById("modeBtn");
+        document.body.classList.toggle("dark-mode");
+
+        if (document.body.classList.contains("dark-mode")) {
+            btn.innerText = "☀️ Light Mode";
+        } else {
+            btn.innerText = "🌙 Dark Mode";
+        }
+    }
+</script>
+
+</body>
+</html>

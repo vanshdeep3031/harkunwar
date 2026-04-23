@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Responsive Bank</title>
+        
+    </head>
+    <style>
+        #h1{
+            background-color: rgb(87, 45, 254);
+            color: white;
+            
+        }
+        #h2{
+            background-color: rgb(243, 3, 3);
+            color: white;
+            
+        }
+        #pp{
+            background-color: whitesmoke;
+        }
+        #oo{
+            color: rgb(6, 6, 6);
+        }
+    </style>
+<body id="pp">
+    <div>
+        <h1 id="oo">Balance: $ <span id="balance"></span></h1>
+        <label for="amount">Amount</label> <br><br>
+        <input type="number" placeholder="enter amount" id="amount"> <br><br>
+        <button id="h1" onclick="deposit()">Deposit</button> &nbsp;
+        <button id="h2" onclick="Withdraw()">Withdraw</button>
+        
+        <p id="message"></p>
+    </div>
+</body>
+<script>
+    let balance=0;
+    function deposit(){
+        let amount=document.getElementById('amount').value;
+        if(amount>0){
+            balance=balance+Number(amount);
+            document.getElementById('balance').innerText=balance;
+            document.getElementsById('message').innerText="Deposit Successfull";
+        }
+        else{
+            document.getElementsById('message').innerText="Enter a valid amount!!";
+        }
+    }
+    function Withdraw(){
+        let amount=document.getElementById('amount').value;
+        if(amount<=balance){
+            balance=balance- Number(amount);
+            document.getElementById('balance').innerText=balance;
+            document.getElementById('message').innerText="withdraw Successfull";
+        }
+        else{
+            document.getElementById('message').innerText="insufficient balance";
+        }
+    }
+
+</script>
+    </html>
